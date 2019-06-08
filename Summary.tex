@@ -19,23 +19,23 @@
 
 \chapter{A Bird's Eye View of the Web}
 
-\textit{Vint Cerf} invented the internet
-while \textit{Tim Berners-Lee} invented the web.
+\emph{Vint Cerf} invented the internet
+while \emph{Tim Berners-Lee} invented the web.
 
 \section{Dreams and visions}
 
-\textit{Ted Nelson} coined the term hypertext.
-His showpiece is his \textit{Xanadu} project.
+\emph{Ted Nelson} coined the term hypertext.
+His showpiece is his \emph{Xanadu} project.
 
-\textit{Douglas Engelbart} gave
-the \textit{Mother of All Demos} in 1968.
+\emph{Douglas Engelbart} gave
+the \emph{Mother of All Demos} in 1968.
 
 \section{The Web and universality}
 
 \subsection{Origins and aims}
 
 In 1989, Berners-Lee convinced CERN to let him work
-on the Web with his \textit{Information Management: A Proposal}.
+on the Web with his \emph{Information Management: A Proposal}.
 A year later, the first webpages came online.
 
 CERN decided to make the Web available royalty-free in 1993.
@@ -51,7 +51,7 @@ to the freedom to develop for the Web.
 Web technologies are standardized
 by the World Wide Web Consortium (W3C)
 
-The Web brings \textit{permissionless innovation}.
+The Web brings \emph{permissionless innovation}.
 You don't need anyone's permission to launch a new idea.
 
 \subsection{Technical foundations}
@@ -82,10 +82,10 @@ so that the entire Web does not.'' -- Tim Berners-Lee
 
 The Web's architecture makes it hard
 to locate specific content.
-\textit{Crawlers} sprung into life
+\emph{Crawlers} sprung into life
 to index content (in a centralized manner).
 
-\textit{RSS feeds} contain the title and summary
+\emph{RSS feeds} contain the title and summary
 of the last entries on a website.
 Here, the user is in control of what they are fed
 and not the other way around.
@@ -103,13 +103,13 @@ In the early days of the Semantic Web,
 noone built applications, because there was no data.
 Noone published data, because there were no applications.
 
-Berners-Lee proposed \textit{Linked Data}:
+Berners-Lee proposed \emph{Linked Data}:
 principles to follow to publish data semantically.
 Let's just get data out and apps will follow.
 
 \subsection{Threats to universality}
 
-\textit{Native apps} essentially undo
+\emph{Native apps} essentially undo
 all progress on device-independence.
 In contrast, we need but only
 a generic browser to browse the Web.
@@ -150,11 +150,11 @@ but does not allow uniquely identifying a person.
 URL became part of a family of technologies related to identification.
 An example of a URL is \textit{mailto:ruben.verborgh@ugent.be},
 where Ruben's mailbox is uniquely identified and located.
-An example of a URN (\textit{Uniform Resource Name}) is an ISBN,
+An example of a URN (\emph{Uniform Resource Name}) is an ISBN,
 which identifies a book in a location-independent manner.
-URIs (\textit{Uniform Resource Identifiers})
+URIs (\emph{Uniform Resource Identifiers})
 are a union of URLs and URNs.
-IRI (\textit{Internationalized Resource Identifier})
+IRI (\emph{Internationalized Resource Identifier})
 extends URI with non-ASCII characters.
 
 The uniform structure of an HTTP URL includes the following
@@ -177,9 +177,9 @@ to obtain a representation of a resource.
 \subsection{HTTP}
 
 HTTP is a protocol that standardized client-server communication.
-HTTP standardizes how clients \textit{request}
+HTTP standardizes how clients \emph{request}
 resource representations from servers.
-HTTP standardizes how servers reply with a \textit{response}
+HTTP standardizes how servers reply with a \emph{response}
 that may contain a representation.
 
 A client sends a request of the following form.
@@ -189,10 +189,10 @@ A client sends a request of the following form.
   <body>
 \end{lstlisting}
 
-An HTTP method is \textit{safe} if it is read-only.
+An HTTP method is \emph{safe} if it is read-only.
 Examples are GET or HEAD.
 
-An HTTP method is \textit{idempotent} if
+An HTTP method is \emph{idempotent} if
 alterations don't alter the outcome.
 Examples are any safe method, PUT or DELETE.
 
@@ -251,8 +251,8 @@ or Facebook's Open Graph.
 \subsection{Servers}
 
 The HTTP protocol does not attach meaning to URL paths.
-There exist \textit{file servers} for static files,
-\textit{application servers} for editable content (CMS)
+There exist \emph{file servers} for static files,
+\emph{application servers} for editable content (CMS)
 or proxies which delegate requests to other Web servers.
 
 A static file server maps HTTP URLs to internal file URLs.
@@ -289,11 +289,11 @@ If POST or PUT are used on a resource,
 a subsequent GET must not be read from cache.
 Repeated PUTs may be ignored, however.
 
-\textit{Forward proxies} are in the network of the client.
+\emph{Forward proxies} are in the network of the client.
 Typically used for caching,
 but possibly for security or anonymity.
 
-\textit{Reverse proxies} are in the network of the server.
+\emph{Reverse proxies} are in the network of the server.
 Also typically used for caching,
 also for routing or abstracting remote architecture.
 
@@ -319,7 +319,7 @@ as you would normally use HTTP over TCP.
 
 Setting up HTTPS involves requesting,
 installing and maintaining a certificate.
-Certificates are requested from a \textit{certificate authority}.
+Certificates are requested from a \emph{certificate authority}.
 
 2 URLs differing only by HTTPS instead of HTTP,
 don't necessarily lead to the same resource.
@@ -332,13 +332,13 @@ that addresses some key bottlenecks.
 TCP connections are costly due to 3-way handshake,
 the amount of connections per host is now limited.
 HTTP is very latency-sensitive.
-\textit{HTTP pipelining} allows issuing multiple requests
+\emph{HTTP pipelining} allows issuing multiple requests
 on a single TCP connection without waiting for responses first.
 
 Many websites used workarounds to circumvent these limitations.
 Such as embedding scripts and styles into HTML documents,
 combining several scripts, styles or images into single files
-or \textit{sharding} which is distributing resources
+or \emph{sharding} which is distributing resources
 across different domains to bypass connection restrictions.
 
 Therefore, HTTP/2 became a binary protocol
@@ -395,8 +395,8 @@ to requests sent by client-side JavaScript.
 
 \chapter{Web APIs}
 
-The handle \textit{affords} opening the door.
-The handle is an \textit{affordance} for opening the door.
+The handle \emph{affords} opening the door.
+The handle is an \emph{affordance} for opening the door.
 Affordances strongly affect usage in software.
 For example, many people can use Word, few Vim.
 Affordances are of crucial importance on the Web.
@@ -449,7 +449,7 @@ doesn't influence success of other requests.
 doesn't need to remember application state,
 enabling it to process more requests in shorter time.
 
-\textit{Hypermedia} is the \textbf{representation} of a resource
+\emph{Hypermedia} is the \textbf{representation} of a resource
 along with \textbf{controls} (links) that lead to next steps.
 
 Statelessness trades off server-side control for bandwidth.
@@ -570,7 +570,7 @@ The concept pointed to by a URL shouldn't change.
 \paragraph{Manipulation of resources through representations}
 
 Clients obtain different representations of a resource
-through \textit{content negotiation}.
+through \emph{content negotiation}.
 
 A client may indicate their preference
 with the \texttt{Accept} header,
@@ -601,10 +601,10 @@ If they do, the action isn't affored by hypermedia.
 
 A ton of do's and don'ts.
 
-The term \textit{hypermedia API} is sometimes used
+The term \emph{hypermedia API} is sometimes used
 to indicate APIs that follow all REST principles.
 
-A client should be able to \textit{follow its nose},
+A client should be able to \emph{follow its nose},
 from any starting point.
 
 \subsection{Designing Web APIs for the long term}
@@ -618,10 +618,10 @@ An elaborate example on Europeana is given.
 
 \subsection{Non-REST Web services}
 
-\textit{Web services} typically refer to XML-based interfaces
+\emph{Web services} typically refer to XML-based interfaces
 on top of HTTP.
 
-While \textit{Web APIs} is a more fashionable term
+While \emph{Web APIs} is a more fashionable term
 for interfaces that use HTTP and JSON.
 
 \subsubsection{Simple Object Acces Protocol (SOAP)}
@@ -709,7 +709,7 @@ API Blueprint focuses on data modeling.
 Hypermedia-based formats place
 their description \emph{in} the message
 
-\textit{Hydra} is an RDF vocabulary
+\emph{Hydra} is an RDF vocabulary
 to describe hypermedia controls and API structure.
 
 \chapter{Metadata and Semantics: Introduction to the Semantic Web}
@@ -738,7 +738,7 @@ Metadata \emph{ultimately} will provide semantic interoperability.
 It will provide a medium where man and machine,
 given the same data, may come to the same conclusions.
 
-Metadata is necessary for \textit{persistence} of information.
+Metadata is necessary for \emph{persistence} of information.
 As in the example of a person born in Nieuwdorp,
 where the name of the village changed to [...],
 metadata helps identify where the person was actually born.
@@ -749,20 +749,20 @@ Such as the scripts or scenarios of a movie.
 Metadata may exist \emph{after} the information it described.
 Such as the comments to a deleted video.
 
-\textit{Taxonomies} were and are used to classify information.
-Now we prefer \textit{Folksonomies}, annotations in free text,
+\emph{Taxonomies} were and are used to classify information.
+Now we prefer \emph{Folksonomies}, annotations in free text,
 no predefined structure, no hierarchy,
 users may add metadata collaboratively.
 An example is a tagcloud.
 
-Tags know some \textit{issues}, such as cultural differences,
+Tags know some \emph{issues}, such as cultural differences,
 e.g. for some Genghis Khan is a hero, for others, a war criminal.
 Different tags may mean the same thing
 (due to linguistic differences).
 A tag may mean different things, e.g. ``Apple''.
 Tags may contain spelling errors.
 
-There exist (many) \textit{metadata standards}.
+There exist (many) \emph{metadata standards}.
 Interoperability requires mappings.
 Many of the issues of tags carry over.
 For example, descriptions of a creator may be
@@ -777,7 +777,7 @@ almost exclusively syntactically.
 
 \section{Adding semantics to data (beyond XML)}
 
-The \textit{Resource Description Framework (RDF)} is a W3C standard.
+The \emph{Resource Description Framework} (RDF) is a W3C standard.
 It represents data in the form of a graph.
 At the atomic level, it consists of triples.
 
@@ -787,7 +787,7 @@ where subject, predicate and object are all \emph{URLs}!
 If they aren't literals.
 But it's still prettier to think them all URLs.
 
-An \textit{ontology} is formal definition
+An \emph{ontology} is formal definition
 of a set of concepts within a domain
 and the relationships between those concepts.
 It is used to \emph{reason}
