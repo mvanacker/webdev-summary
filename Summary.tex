@@ -6,6 +6,7 @@
 \usepackage{bm}
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{float}
 
 \setcounter{secnumdepth}{3}
 
@@ -809,7 +810,7 @@ the Semantic Web,
 instead of merely a web of \emph{documents},
 the Syntactic Web.
 
-It must be integrated into the current Web.
+The Semantic Web must be integrated into the current Web.
 It mustn't be a separate (secondary) web.
 
 Data is represented by graphs.
@@ -826,8 +827,88 @@ Information is abstracted as such because
   \item it is trivial to add new information and connections.
 \end{itemize}
 
+Content on today's Web is tailored 
+for interpretation by humans,
+not for interpretation by machines.
+
+The Semantic Web seeks to add structure
+not to content itself,
+but to its meaning,
+its \emph{semantics}.
+
+Its all about the \emph{meaningful representation} of data.
+
+Traditional techniques involve a centralized system
+where meaning is unambiguously defined.
+An obvious drawback is scalability.
+
+The Semantic Web offers a decentralized approach.
+Though it comes with its own drawbacks,
+finding information may be difficult,
+information may be inconsistent.
+
 \section{Open Linked Data: the Web of data}
 
-\section{So what?}
+The Semantic Web is more than just placing data on the Web.
+It's also about linking that data together.
+
+\emph{Open Data} is a policy.
+It refers to the free availability of data,
+preferably in a non-proprietary format.
+
+\emph{Linked Data} is an approach.
+Data contains links
+and these links may be dereferenced.
+In practice, most Linked Data is expressed in RDF.
+
+\emph{RDF} is a data structure.
+It may be implemented in a variety of formats.
+
+The famous 5-star guide.
+\begin{enumerate}
+  \item[1$\star$] On the web with an open license.
+  \item[2$\star$] Machine-readable format. 
+  \item[3$\star$] Non-proprietary format.
+  \item[4$\star$] RDF standards.
+  \item[5$\star$] Linked RDF.
+\end{enumerate}
+
+\section{Applications}
+
+\subsection{Mashups}
+
+Integration and/or visualization of different data sets.
+For example, governments publishing data
+and the public building applications on top of that data.
+
+\subsection{Smart Queries}
+
+\begin{figure}[H]
+  \textit{
+    Release dates
+    of movies
+    by Peter Jackson
+    featuring Orlando Bloom.
+  }
+
+  \begin{lstlisting}
+    SELECT ?film ?date
+    { 
+      ?film a dbo:Film ;
+            dbo:director dbr:Peter_Jackson ;
+            dbo:starring dbr:Orlando_Bloom ;
+            dbo:releaseDate ?date .
+    }
+  \end{lstlisting}
+\end{figure}
+
+\subsection{schema.org}
+
+Joint effort by Google, Bing and Yahoo!.
+A schema that allows one to describe
+the semantics of a webpage using \emph{HTML microdata}.
+
+Such annotations make it easier for crawlers
+and other applications to understand content.
 
 \end{document}
