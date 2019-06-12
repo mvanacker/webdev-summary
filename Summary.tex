@@ -7,6 +7,8 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{float}
+\usepackage{tabularx}
+\usepackage{tikz}
 
 \setcounter{secnumdepth}{3}
 
@@ -478,6 +480,12 @@ but may introduce increased overhead and latency.
 
 \paragraph{Identification of resources}
 
+Anything that can be named is a \emph{resource}.
+\emph{Information resources} may be represented in bits,
+e.g. images, video, music, software, \dots
+\emph{Non-information resources} can not be represented in bits,
+e.g. people, places, phenomena, concepts, ideas, \dots
+
 Any identifier points to at most 1 resource.
 A resource may be pointed to by multiple identifiers.
 If an identifier points to multiple resources,
@@ -500,7 +508,7 @@ when they are identified.
 
 \paragraph{Self-descriptive messages}
 
-ntermediaries may interpret messages (think: caches).
+Intermediaries may interpret messages (think: caches).
 Also, refer back to statelessness.
 
 Response and request bodies are expressed
@@ -910,5 +918,368 @@ the semantics of a webpage using \emph{HTML microdata}.
 
 Such annotations make it easier for crawlers
 and other applications to understand content.
+
+\chapter{The Semantic Web \& Linked Data}
+
+\section{Linked Data}
+
+\subsection{Principles}
+
+\begin{enumerate}
+  \item Use URIs to name things.
+  \item Use HTTP URIs so they may be dereferenced.
+  \item When such a URI is dereferenced,
+        provide useful information
+        using standards.
+  \item In addition to that information,
+        provide additional links
+        so that more may be discovered.
+\end{enumerate}
+
+\subsubsection{Uniquely identify resources}
+
+\begin{tabularx}{\textwidth}{rl}
+  \textbf{don't} & ``the'' protocol of the Web\\
+  \textbf{do} & \textit{urn:ietf:rfc:7280}\\
+\end{tabularx}
+\begin{tabularx}{\textwidth}{rl}
+  \textbf{don't} & Dan Connolly\\
+  \textbf{do} & \textit{https://en.wikipedia.org/wiki/Dan\_Connolly\_(computer\_scientist)}
+\end{tabularx}
+
+\subsubsection{Identify using HTTP URIs}
+
+Relying on the fact that HTTP URIs are
+\emph{both} identifiers \emph{and} locators,
+an HTTP URI may be \emph{dereferenced} to
+obtain a representation -- in the case of
+an information resource.
+In the case of a non-information resource,
+servers should respond with \texttt{303 See Other}.
+
+\subsubsection{Make URIs lead to useful information}
+
+\emph{Useful} means the information
+\begin{itemize}
+  \item is expressed using standards, e.g. RDF,
+        and/or queryable using SPARQL,
+  \item provides explanation and context for the resource,
+  \item defines the resource in terms of concepts
+        the client already knows or may look up.
+\end{itemize}
+
+\subsubsection{Build a Web of Data}
+
+Links connect a resource to known concepts.
+Links give meaning to data.
+Links allow exploration of related data.
+
+\subsection{Linked Data on the Web}
+
+Hundreds of \emph{vocabularies} provide
+the classes and properties to reuse.
+
+Thousands of \emph{datasets} provide
+identifiers and data of individuals to reuse.
+
+Linked Data makes the \emph{open-world assumption};
+the absence of a fact does not imply its falsehood.
+
+The \emph{Dublin Core} terms are
+a set of 15 common metadata properties.
+
+\emph{Schema.org} is a single vocabulary
+that spans many different fields.
+It mainly provides discovery data for search.
+
+\emph{Open Graph} is similar to schema.org,
+but is mainly used for Facebook integration.
+
+The most well-known dataset is \emph{DBpedia}.
+An alternative is \emph{Wikidata}.
+
+\section{The Semantic Web}
+
+\subsection{Resource Description Framework (RDF)}
+
+The RDF is a model for data interchange on the Web.
+RDF is a standardized way of representing Linked Data.
+
+An \emph{RDF dataset} contains a \emph{default graph}
+and zero or more \emph{named graphs}.
+An \emph{RDF graph} is a set of \emph{RDF triples}.
+An RDF triple consists of a subject, predicate and object.
+A triple belongs to one or more graphs.
+
+There are 3 types of \emph{RDF terms}.
+\begin{itemize}
+  \item \emph{Named nodes} are resources identified by IRIs.
+        Subjects, predicates and objects may be named nodes.
+  \item \emph{Blank nodes} are unnamed resources.
+        Subjects and objects may be blank nodes.
+  \item \emph{Literals} are typed values.
+        Literals may contain a language tag.
+        Only objects may be literals.
+\end{itemize}
+
+A \emph{named graph} is an RDF graph identified by an IRI.
+A triple with a graph is sometimes called a \emph{quad}.
+
+RDF may be expressed in a variety of syntaxes.
+
+\begin{tikzpicture}
+  \begin{scope}[shift={(3cm,-5cm)}, fill opacity=0.5]
+    \draw[fill=lime, draw=black] (0,0) circle (6);
+    \node at (0,5) (A) {\large\textbf{RDF Syntaxes}};
+
+    \draw[fill=green, draw=black] (-1.5,-0.25) circle (3.5);
+    \node at (-1.5,2.5) (C) {\large\textbf{N-triples}};
+    \draw[fill=cyan, draw=black] (-2.5,0) circle (2);
+    \node at (-2.5,1.4) (D) {\large\textbf{Turtle}};
+    \draw[fill=cyan, draw=black] (-2.5,0) circle (1.1);
+    \node at (-2.5,0) (H) {\large\textbf{TriG}};
+    \draw[fill=cyan, draw=black] (0.35,-1.5) circle (1.1);
+    \node at (0.35,-1.5) (I) {\large\textbf{N-Quads}};
+
+    \draw[fill=green, draw=black] (3,3.25) circle (1.3);
+    \node at (3,3.25) (E) {\large\textbf{JSON-LD}};
+
+    \draw[fill=green, draw=black] (4.25,0) circle (1.3);
+    \node at (4.25,0) (F) {\large\textbf{RDF/XML}};
+
+    \draw[fill=green, draw=black] (3,-3.25) circle (1.3);
+    \node at (3,-3.25) (G) {\large\textbf{RDFa}};
+  \end{scope}
+\end{tikzpicture}
+
+RDFa extends existing markup with RDF triples.
+This may be an \emph{alternative to content negotiation}.
+
+\subsection{RDF Schema (RDFS)}
+
+\emph{RDFS} is an RDF vocabulary
+to model RDF vocabularies.
+
+Practitioners often synonymize
+vocabularies and \emph{ontologies}.
+Strictly speaking, vocabularies are sets of words
+while ontologies are \emph{sets of concepts and their relations}.
+
+\subsection{Web Ontology Language (OWL)}
+
+OWL extends RDFS with more advanced concepts.
+
+\section{Querying and Reasoning}
+
+\subsection{SPARQL}
+
+SPARQL is a \emph{query language}
+to manipulate RDF datasets.
+
+The \emph{SPARQL protocol} is a Web API definition
+for querying in the SPARQL language over HTTP.
+
+The main building block of a SPARQL query is
+a \emph{Basic Graph Pattern} (BGP).
+A BGP is a set of \emph{triple patterns}.
+A triple pattern is a triple
+in which any component may be a variable.
+
+A SPARQL query engine finds \emph{solution mappings}
+such that the entire BGP is satisfied.
+
+There are currently 4 read-only query forms.
+\begin{itemize}
+  \item \texttt{SELECT}: match values.
+  \item \texttt{DESCRIBE}: match triples.
+  \item \texttt{ASK}: check for existence.
+  \item \texttt{DESCRIBE}: show information about a resource.
+\end{itemize}
+
+\subsection{RDFS, OWL and N3 inferencing}
+
+\emph{Reasoning} allows clients
+to combine knowledge from different sources
+and infer facts.
+
+\emph{RDFS reasoners} make entailments
+based on RDFS semantics.
+\emph{OWL reasoners} idem dito
+based on OWL semantics.
+
+For example, given the lines below.
+\begin{lstlisting}
+  <#Tim> foaf:knows <#Ted>.
+  foaf:knows rdfs:domain foaf:Person.
+\end{lstlisting}
+An extra triple is created as follows.
+\begin{lstlisting}
+  <#Tim> a foaf:Person.
+\end{lstlisting}
+
+Rule-based reasoners allow users
+to define their own rules.
+An example is \emph{Notation3}
+which allows additional constructs
+such as variables, formulas or implications.
+An example reasoner
+which uses the Notation3 ruleset
+is \emph{EYE}.
+
+\chapter{Open Data}
+
+\textit{Skip}.
+
+\chapter{Video in the Web}
+
+\section{Introduction: W3C's ``Video in the Web'' Activity}
+
+There is a need for efficient adaptation
+and rendering of multimedia.
+
+In the example of a YouTube video;
+the typical YouTube link represents a webpage.
+The video is embedded into that webpage.
+How to actually address the media source?
+
+In addition, video has a time dimension.
+How to refer to fragments of a video?
+
+Since 2007, \emph{Video in the Web} is
+one of 24 activities of the W3C.
+Their mission is to make video
+a \emph{first class citizen} of the Web.
+
+\textit{
+  Build a solid architectural foundation
+  that enables people to create, navigate,
+  search, link and distribute video,
+  instead of an extension
+  that doesn't take full advantage
+  of the Web architecture.
+}
+
+\section{Addressing and annotating media fragments}
+
+Example approaches may be
+to add metadata in a seperate location
+or to add a query or a fragment to the URI.
+
+A good approach encompasses
+\begin{itemize}
+  \item independence of format,
+  \item addressability of the temporal, spatial and track dimensions,
+  \item the relation with the context,
+  \item low complexity,
+  \item minimal impact on the existing Web infrastructure,
+  \item extraction of media in fragments.
+\end{itemize}
+
+The impact of server based fragment extraction.
+\begin{itemize}
+  \item Adaptations must be expressable in \emph{byte ranges}.
+  \item Consequences for the axes
+        \begin{itemize}
+          \item \textbf{temporal}: intra-coded frames,
+          \item \textbf{spatial}: necessity
+                for independently coded spatial regions,
+          \item \textbf{track}: identified by names or IDS.
+        \end{itemize}
+\end{itemize}
+
+The temporal and track axes may be
+easily expressed in terms of byte ranges.
+Though, spatial fragments are very difficult
+to express in terms of byte ranges.
+
+\begin{tabular}{|c|c|}
+  \hline
+  fragment & query\\
+  \hline
+  \#t=20,30 & ?t=20,30\\
+  \hline
+  secundary resource (has context) & primary resource (no context)\\
+  \hline
+  adaptations must be expressable in byte ranges & no adaptation restrictions\\
+  \hline
+  fragments are not sent to server & key-value pairs are sent to server\\
+  \hline
+  maybe cacheable & not cacheable\\
+  \hline
+\end{tabular}
+
+Fragments are \emph{resolved} by the user agent,
+it may be translated to a \texttt{Range} header
+and possibly an \texttt{Accept-Range-Redirect} header.
+
+The toughest challenge is
+to make current media sources
+available via Media Fragments.
+
+\section{Adaptive rendering of multimedia}
+
+Under \emph{HTTP download-and-play} a media resource is
+downloaded and played upon completion.
+
+Under \emph{HTTP progressive download} a media resource is
+downloaded and as soon as
+a certain amount has been received,
+playback already starts.
+
+Under \emph{real-time streaming} a media resource is
+sent at about the same rate it plays.
+This protocol is stateful.
+This dates back to the times
+of \emph{RealPlayer} and such.
+
+There are pros and cons
+to HTTP and real-time approaches.
+\emph{HTTP adaptive streaming} combines
+best of both worlds.
+Except server-side monitoring.
+
+Media resources are divided into \emph{chunks},
+typically 2-10 seconds.
+Each chunk starts with a random access point.
+There is no need
+for physically separated segments.
+The chunks are housed in a container format.
+
+A media resource is represented
+by a manifest and its chunks.
+A manifest contains information
+about versions and segments.
+Any chunk is adressable
+by a HTTP request.
+
+The client reads the manifest, then proceeds
+to steer the media delivery himself (pull vs. push).
+
+Apple specifies this as \emph{HTTP Live Streaming}.
+Their specification is independent of container format.
+The format of their manifest is M3U8.
+
+Microsoft specifies \emph{Smooth Streaming}.
+It works only with \emph{fragmented MP4 files}.
+Their manifest is an XML-based proprietary format.
+Chunks are addressed by unique \emph{URIs}.
+
+Adobe's \emph{HTTP Dynamic Streaming} works
+with fragmented MP4 files
+and only through a Flash media server
+(or extended Apache server).
+Their manifest is in an XML-based proprietary format.
+Chunks are addressed by \emph{byte ranges}.
+
+The master specification is
+\emph{Dynamic Adaptive Streaming over HTTP} (DASH).
+In principle it doesn't depend on anything.
+The manifest is highly flexible
+with regard to the organisation of chunks.
+Both byte ranges and physically separated files are possible.
+
+\section{Content networks}
+
+\textit{Skip}.
 
 \end{document}
